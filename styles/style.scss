@@ -1,0 +1,743 @@
+@import "./mixins.scss";
+@font-face {
+    font-family: ROBOTO;
+    src: url(../assets/Roboto-Thin.ttf) format('ttf');
+}
+
+$primary-background: #fbfcfe;
+$secondary-background: #f8f8f8;
+$primary-purple: #c1187b;
+$primary-transition: all 0.5s ease;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+img {
+    display: block;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+button:not(.btn-next) {
+    background-color: $primary-purple;
+    border: none;
+    color: $primary-background;
+    padding: 15px;
+    min-width: 250px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: $primary-transition;
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+body {
+    font-family: ROBOTO, sans-serif;
+    .header-background-container {
+        position: absolute;
+        height: 100vh;
+        z-index: 0;
+        width: 100vw;
+        right: 0;
+        .relative-mask {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            .img-container {
+                width: 1500px;
+                height: 1000px;
+                position: absolute;
+                right: -200px;
+                top: -510px;
+                transform: rotate(25deg);
+                border-radius: 200px;
+                overflow: hidden;
+                .vertical-container {
+                    width: 100%;
+                    height: 100%;
+                    transform: rotate(-20deg);
+                    position: relative;
+                    top: 400px;
+                    // left: -100px;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                @include breakpoint(1800px) {
+                    width: 1300px;
+                }
+                @include breakpoint(1600px) {
+                    width: 1200px;
+                }
+                @include breakpoint(1450px) {
+                    width: 1100px;
+                    right: -300px;
+                }
+                @include breakpoint(1200px) {
+                    right: -400px;
+                }
+                @include breakpoint(1100px) {
+                    right: -500px;
+                }
+                @include breakpoint(960px) {
+                    display: none;
+                }
+            }
+        }
+        // width: 1500px;
+        // height: 1000px;
+        // border-radius: 200px;
+        // position: absolute;
+        // right: -170px;
+        // top: -500px;
+        // overflow: hidden;
+        // transform: rotate(25deg);
+        // z-index: 0;
+        // .img-container {
+        //     width: 110%;
+        //     transform: rotate(-30deg);
+        //     position: relative;
+        //     top: 140px;
+        //     right: 200px;
+        //     img {
+        //         width: 100%;
+        //         position: relative;
+        //         top: 250px;
+        //         cursor: auto;
+        //         @include breakpoint(1450px) {
+        //             top: 300px;
+        //         }
+        //     }
+        // }
+    }
+    header {
+        background-color: $primary-background;
+        min-height: 700px;
+        .container {
+            padding-top: 30px;
+            nav {
+                width: 70%;
+                margin: auto;
+                @include flexBox(space-between, center);
+                .logo-container {
+                    width: 120px;
+                    img {
+                        width: 100%;
+                        transition: $primary-transition;
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+                    @include breakpoint(800px) {
+                        align-self: center;
+                    }
+                }
+                .menu-container {
+                    @include flexBox(center, center);
+                    @include column-gap(70px);
+                    li {
+                        z-index: 1;
+                        padding: 0 3px;
+                        color: $primary-background;
+                        transition: $primary-transition;
+                        font-size: 20px;
+                        &.active-li {
+                            border-bottom: 2px solid $primary-purple;
+                        }
+                        &:hover {
+                            color: gainsboro;
+                        }
+                        @include breakpoint(800px) {
+                            color: rgb(31, 31, 31);
+                            width: 100%;
+                            text-align: center;
+                            padding: 10px 0;
+                            &.active-li {
+                                border-bottom: unset;
+                                color: $primary-purple;
+                            }
+                        }
+                    }
+                    @include breakpoint(1450px) {
+                        @include column-gap(30px);
+                    }
+                    @include breakpoint(960px) {
+                        @include column-gap(20px);
+                    }
+                    @include breakpoint(800px) {
+                        flex-direction: column;
+                    }
+                }
+                @include breakpoint(1450px) {
+                    width: 80%;
+                }
+                @include breakpoint(1200px) {
+                    width: 90%;
+                }
+                @include breakpoint(800px) {
+                    flex-direction: column;
+                    align-items: stretch;
+                    @include row-gap(70px);
+                    width: 100%;
+                }
+            }
+        }
+        .main-text-container {
+            width: 70%;
+            margin: auto;
+            margin-top: 250px;
+            .main-text {
+                font-size: 60px;
+            }
+            .secondary-text {
+                font-size: 38px;
+                padding-bottom: 50px;
+            }
+            @include breakpoint(960px) {
+                .main-text,
+                .secondary-text {
+                    color: $primary-background;
+                }
+                .main-text {
+                    font-size: 40px;
+                }
+                .secondary-text {
+                    font-size: 20px;
+                }
+            }
+            @include breakpoint(800px) {
+                @include flexBox(center, center, column);
+                margin: unset;
+                height: 500px;
+                width: 100%;
+                background: {
+                    image: url('../assets/window.jpg');
+                    repeat: no-repeat;
+                    size: auto;
+                    position: 85% 53%;
+                }
+            }
+        }
+        @include breakpoint(960px) {
+            background: {
+                image: url('../assets/window.jpg');
+                size: contain;
+                repeat: no-repeat;
+            }
+        }
+        @include breakpoint(800px) {
+            background-image: unset;
+        }
+    }
+    main {
+        .container {
+            width: 50%;
+            margin: auto;
+            @include breakpoint(1900px) {
+                width: 60%;
+            }
+            @include breakpoint(1600px) {
+                width: 70%;
+            }
+            @include breakpoint(1400px) {
+                width: 80%;
+            }
+            @include breakpoint(1200px) {
+                width: 90%;
+            }
+        }
+        background-color: $primary-background;
+        .why-container {
+            padding-top: 50px;
+            width: 70%;
+            margin: auto;
+            position: relative;
+            margin-bottom: 200px;
+            .two-sided-container {
+                @include flexBox(center,
+                stretch);
+                width: 100%;
+                .img-container {
+                    flex-basis: 40%;
+                    img {
+                        width: 100%;
+                    }
+                }
+                .why-content-container {
+                    flex-basis: 60%;
+                    @include flexBox(center,
+                    flex-start);
+                    .content {
+                        padding: 150px 0 0 150px;
+                        .main-text {
+                            font-size: 35px;
+                            padding-bottom: 20px;
+                            @include breakpoint(850px) {
+                                font-size: 23px;
+                                font-weight: bold;
+                                text-align: center;
+                            }
+                        }
+                        .secondary-text {
+                            font-size: 18px;
+                            text-align: justify;
+                            @include breakpoint(850px) {
+                                text-align: center;
+                            }
+                        }
+                        @include breakpoint(1200px) {
+                            padding: 50px 0 0 50px;
+                        }
+                        @include breakpoint(1000px) {
+                            padding: 30px 0 0 30px;
+                        }
+                        @include breakpoint(850px) {
+                            padding: 30px 0;
+                        }
+                    }
+                }
+                @include breakpoint(850px) {
+                    @include flexBox(flex-start,
+                    center,
+                    column);
+                }
+            }
+            .swiper {
+                @include flexBox(center,
+                center);
+                background-color: #ffffff;
+                box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                padding-top: 50px;
+                border-radius: 2px;
+                position: absolute;
+                bottom: -50px;
+                left: 250px;
+                .swiper-container {
+                    @include flexBox(center,
+                    center);
+                    @include column-gap(50px);
+                    position: relative;
+                    .card {
+                        text-align: center;
+                        img {
+                            width: 100%;
+                        }
+                        p {
+                            &.active {
+                                color: $primary-purple;
+                            }
+                            padding-top: 20px;
+                        }
+                        @include breakpoint(850px) {
+                            padding-bottom: 20px;
+                        }
+                    }
+                    .btn-next {
+                        position: absolute;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        right: -50px;
+                        border: none;
+                        background-color: $primary-purple;
+                        color: $primary-background;
+                        cursor: pointer;
+                        transition: $primary-transition;
+                        @include flexBox(center,
+                        center);
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                        .arrow-right {
+                            width: 15px;
+                            height: 15px;
+                            transform: rotate(45deg);
+                            border: 1px solid $primary-background;
+                            border-bottom: none;
+                            border-left: none;
+                            position: relative;
+                            right: 5px;
+                        }
+                        @include breakpoint(850px) {
+                            display: none;
+                        }
+                    }
+                    @include breakpoint(850px) {
+                        @include flexBox(flex-start,
+                        center,
+                        column);
+                    }
+                }
+                @include breakpoint(1300px) {
+                    position: static;
+                    margin-top: 20px;
+                }
+            }
+            @include breakpoint(1000px) {
+                padding-top: 30px;
+                margin-bottom: 50px;
+            }
+        }
+        .offer {
+            background-color: $secondary-background;
+            padding: 100px 0;
+            .container {
+                @include flexBox(center,
+                center,
+                column);
+                .main-text {
+                    font-size: 40px;
+                    padding-bottom: 20px;
+                }
+                .secondary-text {
+                    text-align: center;
+                    padding-bottom: 50px;
+                    @include breakpoint(1200px) {
+                        width: 60%;
+                    }
+                    @include breakpoint(850px) {
+                        width: 70%;
+                    }
+                }
+                .cards-container {
+                    @include flexBox(center,
+                    stretch);
+                    @include column-gap(40px);
+                    width: 100%;
+                    flex-wrap: wrap;
+                    @include row-gap(40px);
+                    .cards {
+                        @include flexBox(flex-start,
+                        center,
+                        column);
+                        text-align: center;
+                        padding: 20px 10px;
+                        background-color: $primary-background;
+                        min-width: 200px;
+                        flex-basis: 20%;
+                        border-radius: 6px;
+                        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.1);
+                        img {
+                            width: 30px;
+                            height: auto;
+                            padding-bottom: 20px;
+                        }
+                        p {
+                            &:nth-child(2) {
+                                font-weight: bold;
+                                padding-bottom: 5px;
+                            }
+                            &:nth-child(3) {
+                                opacity: 0.7;
+                            }
+                        }
+                    }
+                    @include breakpoint(1200px) {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                    @include breakpoint(1000px) {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            }
+            @include breakpoint(1000px) {
+                padding: 50px 0;
+            }
+        }
+        .services {
+            padding: 0 0 100px 0;
+            .container {
+                @include flexBox(center,
+                stretch);
+                .right-side {
+                    flex-basis: 60%;
+                    @include flexBox(center,
+                    flex-end);
+                    .barbershop-container {
+                        width: 300px;
+                        margin-bottom: 50px;
+                        height: 70%;
+                        overflow: hidden;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .floor-container {
+                        width: 200px;
+                        position: relative;
+                        top: 10px;
+                        border-radius: 2px;
+                        right: -50px;
+                        padding: 10px;
+                        background-color: $primary-background;
+                        img {
+                            width: 100%;
+                        }
+                        @include breakpoint(550px) {
+                            display: none;
+                        }
+                    }
+                    @include breakpoint(1000px) {
+                        padding-top: 50px;
+                    }
+                }
+                .left-side {
+                    flex-basis: 40%;
+                    @include flexBox(flex-end,
+                    flex-start,
+                    column);
+                    .main-text {
+                        margin-bottom: 20px;
+                        font-size: 30px;
+                    }
+                    .about-us {
+                        margin-bottom: 50px;
+                    }
+                    .secondary-text {
+                        margin-bottom: 40px;
+                        @include breakpoint(1200px) {
+                            width: 60%;
+                        }
+                        @include breakpoint(850px) {
+                            width: 70%;
+                        }
+                    }
+                    @include breakpoint(1000px) {
+                        padding-top: 50px;
+                        order: 1;
+                        align-items: center;
+                        text-align: center;
+                    }
+                    @include breakpoint(550px) {
+                        padding-top: 0;
+                    }
+                }
+                @include breakpoint(1000px) {
+                    @include flexBox(flex-start,
+                    center,
+                    column);
+                }
+            }
+            @include breakpoint(550px) {
+                padding: 0;
+            }
+        }
+        .tabs-container {
+            background-color: $secondary-background;
+            padding: 100px 0;
+            .container {
+                @include flexBox(flex-start,
+                flex-start,
+                column);
+                @include row-gap(70px);
+                .tab-options {
+                    @include flexBox(flex-start,
+                    center);
+                    flex-wrap: wrap;
+                    @include column-gap(20px);
+                    @include row-gap(20px);
+                    li {
+                        font-weight: bold;
+                        &.active {
+                            color: $primary-purple;
+                        }
+                    }
+                    @include breakpoint(850px) {
+                        @include flexBox(space-between,
+                        center);
+                    }
+                    @include breakpoint(550px) {
+                        @include flexBox(flex-start,
+                        center,
+                        column);
+                    }
+                }
+                .main-img-container {
+                    width: 100%;
+                    height: 200px;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        position: relative;
+                        top: -110%;
+                        @include breakpoint(900px) {
+                            top: -80%;
+                        }
+                        @include breakpoint(700px) {
+                            top: -50%;
+                        }
+                        @include breakpoint(600px) {
+                            top: -30%;
+                        }
+                    }
+                    @include breakpoint(800px) {
+                        display: none;
+                    }
+                }
+                .cards-container {
+                    @include flexBox(flex-start,
+                    center);
+                    @include column-gap(20px);
+                    width: 100%;
+                    .card {
+                        flex-basis: 33%;
+                        .img-container {
+                            height: 200px;
+                            overflow: hidden;
+                            img {
+                                width: 100%;
+                            }
+                        }
+                        .main-text {
+                            font-size: 18px;
+                            padding-top: 10px;
+                            padding-bottom: 5px;
+                        }
+                        .secondary-text {
+                            opacity: 0.5;
+                        }
+                        @include breakpoint(800px) {
+                            padding-bottom: 20px;
+                        }
+                    }
+                    @include breakpoint(800px) {
+                        @include flexBox(flex-start,
+                        center,
+                        column);
+                    }
+                }
+                @include breakpoint(850px) {
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+        .user-experince {
+            padding: 100px 0;
+            text-align: center;
+            .main-text {
+                font-size: 40px;
+                @include breakpoint(1000px) {
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+                @include breakpoint(500px) {
+                    font-size: 25px;
+                }
+            }
+            .secondary-text {
+                font-size: 25px;
+                padding-bottom: 100px;
+            }
+            .comments-container {
+                @include flexBox(center,
+                stretch);
+                @include column-gap(70px);
+                .card {
+                    flex-basis: 50%;
+                    position: relative;
+                    box-shadow: 5px 10px 30px 0 rgba(0, 0, 0, 0.1);
+                    padding: 35px;
+                    text-align: left;
+                    .img-container {
+                        width: 70px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        position: absolute;
+                        left: -35px;
+                        top: -35px;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .row {
+                        @include flexBox(space-between,
+                        center);
+                        padding-bottom: 20px;
+                        .stars {
+                            @include flexBox(center,
+                            center);
+                            img {
+                                width: 15px;
+                            }
+                        }
+                    }
+                    .comment-container {
+                        blockquote {
+                            opacity: 0.5;
+                            font-style: italic;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                @include breakpoint(1000px) {
+                    @include flexBox(flex-start,
+                    center,
+                    column);
+                    @include row-gap(70px);
+                    width: 80%;
+                    margin: auto;
+                }
+                @include breakpoint(500px) {
+                    width: 90%;
+                }
+            }
+        }
+    }
+    footer {
+        padding-bottom: 50px;
+        background-color: $primary-background;
+        .logo-container {
+            width: 50%;
+            margin: auto;
+            @include flexBox(center,
+            center);
+            @include column-gap(100px);
+            .logo {
+                flex-basis: 25%;
+                img {
+                    width: 100%;
+                    filter: grayscale(1);
+                    opacity: 0.5;
+                    transition: $primary-transition;
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+            @include breakpoint(1900px) {
+                width: 60%;
+            }
+            @include breakpoint(1600px) {
+                width: 70%;
+            }
+            @include breakpoint(1400px) {
+                width: 80%;
+            }
+            @include breakpoint(1200px) {
+                width: 90%;
+            }
+            @include breakpoint(800px) {
+                @include flexBox(flex-start,
+                center,
+                column);
+                width: 50%;
+                @include row-gap(70px);
+            }
+        }
+    }
+}

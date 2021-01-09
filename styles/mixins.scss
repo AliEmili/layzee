@@ -1,0 +1,26 @@
+@mixin flexBox($justify-content, $align-items, $flex-direction:row) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
+}
+
+@mixin breakpoint($size) {
+    @media (max-width: $size) {
+        @content;
+    }
+}
+
+@mixin column-gap($size) {
+    column-gap: $size;
+    -moz-column-gap: $size;
+    -webkit-column-gap: $size;
+    grid-column-gap: $size;
+}
+
+@mixin row-gap($size) {
+    row-gap: $size;
+    -moz-row-gap: $size;
+    -webkit-row-gap: $size;
+    grid-row-gap: $size;
+}
